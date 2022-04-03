@@ -9,8 +9,11 @@ if(inital.openInputandOutputFiles(argc, argv)){
     cout << "All conversions have been executed if possible. Thank you for using this program." << endl;
 }
 else{
+    //runs until user decides to end program;
         while (inital.checkToEndProgram()) {
-            inital.setInput();
+            if(inital.setInput()){
+                inital.checkForRomanOrIntConversion();
+            }
         }
     }
     return 0;

@@ -17,11 +17,12 @@ using namespace std;
 class RomanNumeralConversion {
 private:
     string romanNumeralInput, integerInput, userInput;
-    vector<char> romanNumeralSeperated;
-    bool inputFileInUse;
+    int sum =0;
+    bool inputFileInUse, romanConversion;
 public:
+
     /**
-     *
+     * roman numeral conversion object that holds input parameters
      * @param romanInput
      * @param intInput
      */
@@ -29,6 +30,23 @@ public:
         romanNumeralInput = romanInput;
         integerInput = intInput;
     }
+
+    /**
+     * no return value but will print to console the values of the conversion performed
+     */
+    void checkForRomanOrIntConversion(){
+        if(romanConversion){
+            cout << "your roman numeral " << romanNumeralInput << " is " << convertRomanNumeralsToDecimal()
+            << " in decimal form." << endl;
+        }
+        else{
+            convertDecimalToRomanNumerals();
+        }
+    }
+    /**
+     * checks whether or not user wishes to end program
+     * @return a bool to indicate whether or not program should end
+     */
 
     bool checkToEndProgram(){
         cout << "Would you like to convert a value or roman numeral? Enter 'Y' to continue or any other value to quit" << endl;
@@ -41,6 +59,12 @@ public:
         }
 
     }
+
+    /**
+     * checks what operation needs to be done and takes input for either roman numeral or integer depending on user desire
+     * @return a true or false depending on whether or not input is valid based on nested function checkRomanNumeralInput() or
+     * checkIntegerInput()
+     */
     bool setInput(){
         cout << "Are you converting Roman Numerals to Decimal Numbers? Enter Y or N" << endl;
         cin>>  userInput;
@@ -68,17 +92,67 @@ public:
             return false;
         }
     }
-
+/**
+ * this function will convert Decimal numbers to roman numerals
+ * still need to implement
+ * @return Roman Numeral representation of number in string form
+ */
     string convertDecimalToRomanNumerals() {
         integerInput;
     };
+    /**
+     * function to convert romman numerals to decimal form
+     * still needs to finish implementing correctly rules in order to find values
+     * @return roman numeral sum in integer form
+     */
 
-    string convertRomanNumeralsToDecimal() {
-        romanNumeralSeperated;
+    int convertRomanNumeralsToDecimal() {
+        vector<char> romanNumeralSeperated(romanNumeralInput.begin(), romanNumeralInput.end());
+        vector<int> romanNumeralValues =returnRomanNumsAsValues(romanNumeralSeperated);
+        for(int i = 0; i < romanNumeralValues.size(); i++){
+            if(romanNumeralValues.at(i) < romanNumeralValues.at(i+1)){
+                sum += romanNumeralValues.at(i+1) - romanNumeralValues.at(i);
+                i++;
+            }
+            else if(romanNumeralValues.at(i) > romanNumeralValues.at(i+1)){
+                sum += romanNumeralValues.at(i) + romanNumeralValues.at(i+1);
+            }
+        }
+        return sum;
     }
+    /**
+     * converts roman numerals to their numeric value each symbol
+     * @param romanNums
+     * @return a vector of ints with each rom numeral in order
+     */
+
+    vector<int> returnRomanNumsAsValues(vector<char> romanNums){
+        vector<int> romNumValues(romanNums.size());
+        for(int i = 0; i < romanNums.size(); i++){
+            if(romanNums.at(i) == 'I') romNumValues.at(i) = 1;
+            if(romanNums.at(i) == 'V') romNumValues.at(i) = 5;
+            if(romanNums.at(i) == 'X') romNumValues.at(i) = 10;
+            if(romanNums.at(i) == 'L') romNumValues.at(i) = 50;
+            if(romanNums.at(i) == 'C') romNumValues.at(i) = 100;
+            if(romanNums.at(i) == 'D') romNumValues.at(i) = 500;
+            if(romanNums.at(i) == 'M') romNumValues.at(i) = 1000;
+        }
+        return romNumValues;
+    }
+/**
+ * checks if roman numeral input from user is correct and converts input to capital letters
+ * I still need to implement rule #4 from doc
+ * @return bool if input is formated correctly
+ */
 
     bool checkRomanNumeralInput(){
         vector<char> userInputSeperated(userInput.begin(), userInput.end());
+        for(int i = 0; i < userInputSeperated.size(); i++){
+            //if checks if value is a letter before using toUpper
+            if(isalpha(userInputSeperated.at(i))) {
+                userInputSeperated.at(i) = toupper(userInputSeperated.at(i));
+            }
+        }
         for(int i = 0; i < userInputSeperated.size(); i++){
             if(userInputSeperated.at(i) == 'I' || userInputSeperated.at(i) == 'V' || userInputSeperated.at(i) == 'X' || userInputSeperated.at(i) == 'L' ||
                userInputSeperated.at(i) == 'C' || userInputSeperated.at(i) == 'D' || userInputSeperated.at(i) == 'M'){
@@ -89,9 +163,14 @@ public:
                 return false;
             }
         }
+        romanNumeralInput = userInput;
+        romanConversion = true;
         return true;
     }
-
+/**
+ * check if integer input from user is an integer or not
+ * @return bool value if true or false
+ */
     bool checkIntegerInputFunction() {
         vector<char> userInputSeperated(userInput.begin(), userInput.end());
         for(int i = 0; i < userInputSeperated.size(); i++){
@@ -103,9 +182,17 @@ public:
                 return false;
             }
         }
+        integerInput = userInput;
+        romanConversion = false;
         return true;
     }
-
+/**
+ * check if user has an input file that they would like to use to use for conversion
+ * and then checks if input and output files are able to be opened.
+ * @param argc
+ * @param argv
+ * @return
+ */
     int openInputandOutputFiles(int argc, char *argv[]) {
         char userInput;
         cout<< "Do you have an input file to convert Roman Numerals to Decimal Numbers or Vice Versa? Enter 'Y' or 'N' now "<< endl;
