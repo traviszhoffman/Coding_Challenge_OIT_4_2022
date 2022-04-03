@@ -40,7 +40,8 @@ public:
             << " in decimal form." << endl;
         }
         else{
-            convertDecimalToRomanNumerals();
+            cout << "your decimal form value " << integerInput << " is " << convertDecimalToRomanNumerals()
+            << " in roman numeral form." << endl;
         }
     }
     /**
@@ -98,7 +99,8 @@ public:
  * @return Roman Numeral representation of number in string form
  */
     string convertDecimalToRomanNumerals() {
-        integerInput;
+        string RomanNumeralResult = "Nothing Currently. Edit once conversion function has been made";
+        return RomanNumeralResult;
     };
     /**
      * function to convert romman numerals to decimal form
@@ -106,16 +108,23 @@ public:
      * @return roman numeral sum in integer form
      */
 
+    //NEED TO FINISH EDITING DOESN't ADD THE LAST VALUE if its a 1 at least not sure. most of the time gives correct value
     int convertRomanNumeralsToDecimal() {
+        sum = 0;
         vector<char> romanNumeralSeperated(romanNumeralInput.begin(), romanNumeralInput.end());
         vector<int> romanNumeralValues =returnRomanNumsAsValues(romanNumeralSeperated);
         for(int i = 0; i < romanNumeralValues.size(); i++){
-            if(romanNumeralValues.at(i) < romanNumeralValues.at(i+1)){
+            if(i+1 >= romanNumeralValues.size()){
+                break;
+            }
+            else if(romanNumeralValues.at(i) < romanNumeralValues.at(i+1)){
                 sum += romanNumeralValues.at(i+1) - romanNumeralValues.at(i);
                 i++;
+                continue;
             }
-            else if(romanNumeralValues.at(i) > romanNumeralValues.at(i+1)){
-                sum += romanNumeralValues.at(i) + romanNumeralValues.at(i+1);
+            else if(romanNumeralValues.at(i) >= romanNumeralValues.at(i+1)){
+                sum += romanNumeralValues.at(i);
+                continue;
             }
         }
         return sum;
@@ -198,7 +207,8 @@ public:
         cout<< "Do you have an input file to convert Roman Numerals to Decimal Numbers or Vice Versa? Enter 'Y' or 'N' now "<< endl;
         cin >> userInput;
         userInput = toupper(userInput);
-        if (userInput == 'Y') {
+        if (userInput == 'Y' || userInput == 'y' ) {
+            inputFileInUse = true;
             if (argc < 3) {
                 cerr << "Please provide name of input and output files";
                 return 1;
@@ -216,7 +226,6 @@ public:
                 cerr << "Unable to open " << argv[2] << " for output";
                 return 3;
             }
-            inputFileInUse = true;
         } else {
             inputFileInUse = false;
             return 0;
