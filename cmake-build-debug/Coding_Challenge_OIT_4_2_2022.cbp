@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/travi/CLionProjects/Coding_Challenge_OIT_4_2_2022/RomanNumeralConversion.cpp">
+			<Option target="Coding_Challenge_OIT_4_2_2022"/>
+		</Unit>
+		<Unit filename="C:/Users/travi/CLionProjects/Coding_Challenge_OIT_4_2_2022/RomanNumeralConversion.h">
+			<Option target="Coding_Challenge_OIT_4_2_2022"/>
+		</Unit>
 		<Unit filename="C:/Users/travi/CLionProjects/Coding_Challenge_OIT_4_2_2022/main.cpp">
 			<Option target="Coding_Challenge_OIT_4_2_2022"/>
 		</Unit>

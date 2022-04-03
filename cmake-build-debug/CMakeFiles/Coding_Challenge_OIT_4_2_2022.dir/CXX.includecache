@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/travi/CLionProjects/Coding_Challenge_OIT_4_2_2022/RomanNumeralConversion.cpp
+RomanNumeralConversion.h
+C:/Users/travi/CLionProjects/Coding_Challenge_OIT_4_2_2022/RomanNumeralConversion.h
+
+C:/Users/travi/CLionProjects/Coding_Challenge_OIT_4_2_2022/RomanNumeralConversion.h
+iostream
+-
+string
+-
+cstring
+-
+vector
+-
+fstream
+-
+
+C:/Users/travi/CLionProjects/Coding_Challenge_OIT_4_2_2022/main.cpp
+iostream
+-
+RomanNumeralConversion.h
+C:/Users/travi/CLionProjects/Coding_Challenge_OIT_4_2_2022/RomanNumeralConversion.h
+

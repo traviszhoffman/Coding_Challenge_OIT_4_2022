@@ -128,6 +128,30 @@ Coding_Challenge_OIT_4_2_2022/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Coding_Challenge_OIT_4_2_2022.dir\build.make CMakeFiles/Coding_Challenge_OIT_4_2_2022.dir/build
 .PHONY : Coding_Challenge_OIT_4_2_2022/fast
 
+RomanNumeralConversion.obj: RomanNumeralConversion.cpp.obj
+.PHONY : RomanNumeralConversion.obj
+
+# target to build an object file
+RomanNumeralConversion.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Coding_Challenge_OIT_4_2_2022.dir\build.make CMakeFiles/Coding_Challenge_OIT_4_2_2022.dir/RomanNumeralConversion.cpp.obj
+.PHONY : RomanNumeralConversion.cpp.obj
+
+RomanNumeralConversion.i: RomanNumeralConversion.cpp.i
+.PHONY : RomanNumeralConversion.i
+
+# target to preprocess a source file
+RomanNumeralConversion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Coding_Challenge_OIT_4_2_2022.dir\build.make CMakeFiles/Coding_Challenge_OIT_4_2_2022.dir/RomanNumeralConversion.cpp.i
+.PHONY : RomanNumeralConversion.cpp.i
+
+RomanNumeralConversion.s: RomanNumeralConversion.cpp.s
+.PHONY : RomanNumeralConversion.s
+
+# target to generate assembly for a file
+RomanNumeralConversion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Coding_Challenge_OIT_4_2_2022.dir\build.make CMakeFiles/Coding_Challenge_OIT_4_2_2022.dir/RomanNumeralConversion.cpp.s
+.PHONY : RomanNumeralConversion.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -161,6 +185,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Coding_Challenge_OIT_4_2_2022
+	@echo ... RomanNumeralConversion.obj
+	@echo ... RomanNumeralConversion.i
+	@echo ... RomanNumeralConversion.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
